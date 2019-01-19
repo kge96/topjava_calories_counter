@@ -33,4 +33,14 @@ public class MealWithExceed {
     public boolean isExceed() {
         return exceed;
     }
+
+    @Override
+    public String toString() {
+        return "MealWithExceed{" +
+                "dateTime=" + dateTime +
+                ", description='" + description + '\'' +
+                ", calories=" + calories +
+                ", exceed=" + exceed +
+                '}';
+    }
 }
