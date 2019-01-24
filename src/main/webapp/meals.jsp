@@ -6,11 +6,36 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="javatime" uri="http://sargue.net/jsptags/time" %>
 <html>
 <head>
+    <link rel="stylesheet" href="style/style.css">
     <title>Title</title>
 </head>
 <body>
     <h2>This is meals page</h2>
+    
+    <table border="1" cellspacing="0" cellpadding="2">
+        <caption>Table of user meals</caption>
+        <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Calories</th>
+            <th colspan="2">Action</th>
+        </tr>
+        <c:forEach var="meal" items="${mealList}">
+            <tr class="${meal.exceed ? 'exceed' : 'normal'}">
+                <td class=""><javatime:format value="${meal.dateTime}" style="SS"/></td>
+                <td>${meal.description}</td>
+                <td>${meal.calories}</td>
+                <td><a href="meal?action=edit">Update</a></td>
+                <td><a href="meal?action=delete">Delete</a></td>
+            </tr>
+        </c:forEach>
+    </table>
+    
+    <p><a href="meal?action=add">add meal</a></p>
 </body>
 </html>
