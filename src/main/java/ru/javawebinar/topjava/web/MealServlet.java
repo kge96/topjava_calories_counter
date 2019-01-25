@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.slf4j.LoggerFactory.getLogger;
@@ -20,7 +21,7 @@ public class MealServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		log.debug("start doGet from MealServlet");
-		List<MealWithExceed> mealWithExceeds = MealsUtil.getFilteredMealsWithExceed();
+		List<MealWithExceed> mealWithExceeds = new ArrayList<>(MealsUtil.getFilteredMealsWithExceed().values());
 		req.setAttribute("mealList", mealWithExceeds);
 		getServletContext().getRequestDispatcher("/meals.jsp").forward(req, resp);
 //		resp.sendRedirect("meals.jsp");
