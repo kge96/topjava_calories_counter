@@ -6,36 +6,51 @@ public class Meal {
 
     private Integer id;
 
-    protected final LocalDateTime dateTime;
+    protected LocalDateTime dateTime;
 
-    protected final String description;
+    protected String description;
 
-    protected final int calories;
+    protected int calories;
 
-    public Meal(int id, LocalDateTime dateTime, String description, int calories) {
+	public Meal() {
+	}
+
+	public Meal(int id, LocalDateTime dateTime, String description, int calories) {
         this.id = id;
         this.dateTime = dateTime;
         this.description = description;
         this.calories = calories;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public int getCalories() {
-        return calories;
-    }
+	public LocalDateTime getDateTime() {
+		return dateTime;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public void setDateTime(LocalDateTime dateTime) {
+		this.dateTime = dateTime;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getCalories() {
+		return calories;
+	}
+
+	public void setCalories(int calories) {
+		this.calories = calories;
+	}
 }

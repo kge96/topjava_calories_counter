@@ -11,7 +11,8 @@
 <%@ taglib prefix="javatime" uri="http://sargue.net/jsptags/time" %>
 <html>
 <head>
-    <link rel="stylesheet" href="style/style.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
     <title>Title</title>
 </head>
 <body>
@@ -27,11 +28,11 @@
         </tr>
         <c:forEach var="meal" items="${mealList}">
             <tr class="${meal.exceed ? 'exceed' : 'normal'}">
-                <td class=""><javatime:format value="${meal.dateTime}" style="SS"/></td>
+                <td class=""><javatime:format value="${meal.dateTime}" pattern="dd.MM.yyyy hh:mm"/></td>
                 <td>${meal.description}</td>
                 <td>${meal.calories}</td>
-                <td><a href="meal?action=edit">Update</a></td>
-                <td><a href="meal?action=delete">Delete</a></td>
+                <td><a href="meal?action=edit&id=<c:out value="${meal.id}"/>">Update</a></td>
+                <td><a href="meal?action=delete&id=<c:out value="${meal.id}"/>">Delete</a></td>
             </tr>
         </c:forEach>
     </table>
