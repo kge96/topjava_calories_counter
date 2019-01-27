@@ -38,7 +38,7 @@ public class MealsUtil {
 
 		return mealList.stream()
 				.filter(meal -> TimeUtil.isBetween(meal.getDateTime().toLocalTime(), start, end))
-				.map(meal -> new MealWithExceed(meal.getDateTime(), meal.getDescription(), meal.getCalories(), dayCaloriesCount.get(meal.getDateTime().toLocalDate()) > limit))
+				.map(meal -> new MealWithExceed(meal.getId(), meal.getDateTime(), meal.getDescription(), meal.getCalories(), dayCaloriesCount.get(meal.getDateTime().toLocalDate()) > limit))
 				.collect(Collectors.toList());
 	}
 
