@@ -1,4 +1,4 @@
-package ru.javawebinar.topjava.repository;
+package ru.javawebinar.topjava.repository.api;
 
 import ru.javawebinar.topjava.model.Meal;
 
@@ -8,7 +8,7 @@ public interface MealRepository {
 
 	Meal save(Meal meal);
 
-	void delete(int id);
+	boolean delete(int id);
 
 	Meal get(int id);
 

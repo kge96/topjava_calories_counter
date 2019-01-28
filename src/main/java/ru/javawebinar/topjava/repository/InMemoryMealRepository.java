@@ -1,6 +1,7 @@
 package ru.javawebinar.topjava.repository;
 
 import ru.javawebinar.topjava.model.Meal;
+import ru.javawebinar.topjava.repository.api.MealRepository;
 
 import java.time.LocalDateTime;
 import java.time.Month;
