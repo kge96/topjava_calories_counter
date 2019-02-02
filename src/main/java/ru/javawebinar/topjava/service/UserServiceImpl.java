@@ -1,15 +1,24 @@
 package ru.javawebinar.topjava.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.javawebinar.topjava.model.User;
-import ru.javawebinar.topjava.repository.api.UserRepository;
+import ru.javawebinar.topjava.repository.UserRepository;
 import ru.javawebinar.topjava.service.api.UserService;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
 import java.util.List;
 
+@Service
 public class UserServiceImpl implements UserService {
 
-	private UserRepository userRepository;
+	@Autowired
+	private UserRepository repository;
+
+//	for xml configuring
+//	public void setRepository(UserRepository repository) {
+//		this.repository = repository;
+//	}
 
 	@Override
 	public User save(User user) {
