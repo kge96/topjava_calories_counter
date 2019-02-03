@@ -16,18 +16,18 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 @Repository
-public class InMemoryUserRepositoryImpl implements UserRepository {
+public class MockUserRepositoryImpl implements UserRepository {
 
-	private static final Logger log = LoggerFactory.getLogger(InMemoryUserRepositoryImpl.class);
+	private static final Logger log = LoggerFactory.getLogger(MockUserRepositoryImpl.class);
 
 	private ConcurrentMap<Integer, User> USERS = new ConcurrentHashMap<>();
 
 	private AtomicInteger counter = new AtomicInteger(0);
 
 	{
-		save(new User("user-1", "user1@mail.ru", "12345", Role.ROLE_USER));
-		save(new User("user-2", "user2@mail.ru", "54321", Role.ROLE_USER));
-		save(new User("admin", "admin@mail.ru", "root", Role.ROLE_ADMIN));
+		save(new User(counter.incrementAndGet(), "user-1", "user1@mail.ru", "12345", Role.ROLE_USER));
+		save(new User(counter.incrementAndGet(), "user-2", "user2@mail.ru", "54321", Role.ROLE_USER));
+		save(new User(counter.incrementAndGet(), "admin", "admin@mail.ru", "root", Role.ROLE_ADMIN));
 	}
 
 	@Override
