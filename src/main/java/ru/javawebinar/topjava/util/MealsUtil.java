@@ -1,7 +1,7 @@
 package ru.javawebinar.topjava.util;
 
 import ru.javawebinar.topjava.model.Meal;
-import ru.javawebinar.topjava.model.MealWithExceed;
+import ru.javawebinar.topjava.to.MealWithExceed;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -20,6 +20,8 @@ public class MealsUtil {
 			new Meal(LocalDateTime.of(2019, Month.JANUARY, 16, 13, 0), "Обед", 1000),
 			new Meal(LocalDateTime.of(2019, Month.JANUARY, 16, 19, 0), "Ужин", 400)
 	);
+
+	public static final int DEFAULT_CALORIES_PER_DAY = 2000;
 
 	public static void main(String[] args) {
 		List<MealWithExceed> filteredMealWithExceeded = getFilteredMealsWithExceed(MEAL_LIST, LocalTime.of(7, 0), LocalTime.of(19, 0), 2000);

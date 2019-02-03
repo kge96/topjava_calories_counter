@@ -2,8 +2,7 @@ package ru.javawebinar.topjava;
 
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.javawebinar.topjava.repository.mock.MockUserRepositoryImpl;
-import ru.javawebinar.topjava.web.user.UserRestController;
+import ru.javawebinar.topjava.web.user.ProfileRestController;
 
 
 public class SpringMain {
@@ -13,8 +12,8 @@ public class SpringMain {
 		for (String name :  appCtx.getBeanDefinitionNames()) {
 			System.out.println(String.format("[%s]", name));
 		}
-		UserRestController mockUserRepository = (UserRestController)appCtx.getBean("userRestController");
-		mockUserRepository = appCtx.getBean(UserRestController.class);
+		ProfileRestController mockUserRepository = (ProfileRestController)appCtx.getBean("profileRestController");
+		mockUserRepository = appCtx.getBean(ProfileRestController.class);
 
 		System.out.println(mockUserRepository.toString());
 		appCtx.close();

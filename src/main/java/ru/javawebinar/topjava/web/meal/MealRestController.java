@@ -6,5 +6,5 @@ import ru.javawebinar.topjava.service.api.MealService;
 @Controller
 public class MealRestController {
 
-	private MealService mealService;
+	private MealService service;
 }

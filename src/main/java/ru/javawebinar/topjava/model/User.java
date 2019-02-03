@@ -4,7 +4,9 @@ import java.util.Date;
 import java.util.EnumSet;
 import java.util.Set;
 
-public class User extends NamedEntity {
+import static ru.javawebinar.topjava.util.MealsUtil.DEFAULT_CALORIES_PER_DAY;
+
+public class User extends AbstractNamedEntity {
 
 	private String email;
 
@@ -12,22 +14,24 @@ public class User extends NamedEntity {
 
 	private boolean enabled = true;
 
-	private Date registred = new Date();
+	private Date registered = new Date();
 
-	private Set<Role> authorities;
+	private Set<Role> roles;
 
-	public User() {
+	private int caloriesPerDay = DEFAULT_CALORIES_PER_DAY;
 
+	public User(Integer id, String name, String email, String password, Role role, Role... roles) {
+		this(id, name, email, password, DEFAULT_CALORIES_PER_DAY, true, EnumSet.of(role, roles));
 	}
 
-	public User(String name, String email, String password, Role role, Role... roles) {
-		super(name);
+	public User(Integer id, String name, String email, String password, int caloriesPerDay, boolean enabled, Set<Role> roles) {
+		super(null, name);
 		this.email = email;
 		this.password = password;
+		this.caloriesPerDay = caloriesPerDay;
 		this.enabled = true;
-		this.authorities = EnumSet.of(role, roles);
+		this.roles = roles;
 	}
-
 
 	public String getEmail() {
 		return email;
@@ -53,20 +57,20 @@ public class User extends NamedEntity {
 		this.enabled = enabled;
 	}
 
-	public Date getRegistred() {
-		return registred;
+	public Date getRegistered() {
+		return registered;
 	}
 
-	public void setRegistred(Date registred) {
-		this.registred = registred;
+	public void setRegistered(Date registered) {
+		this.registered = registered;
 	}
 
 	public Set<Role> getAuthorities() {
-		return authorities;
+		return roles;
 	}
 
 	public void setAuthorities(Set<Role> authorities) {
-		this.authorities = authorities;
+		this.roles = authorities;
 	}
 
 	@Override
@@ -75,7 +79,7 @@ public class User extends NamedEntity {
 				"email='" + email + '\'' +
 				", password='" + password + '\'' +
 				", enabled=" + enabled +
-				", registred=" + registred +
+				", registered=" + registered +
 				", name='" + name + '\'' +
 				'}';
 	}
