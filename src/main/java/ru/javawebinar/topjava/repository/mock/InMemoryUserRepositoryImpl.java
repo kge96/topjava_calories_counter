@@ -16,9 +16,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 @Repository
-public class MockUserRepositoryImpl implements UserRepository {
+public class InMemoryUserRepositoryImpl implements UserRepository {
 
-	private static final Logger log = LoggerFactory.getLogger(MockUserRepositoryImpl.class);
+	private static final Logger log = LoggerFactory.getLogger(InMemoryUserRepositoryImpl.class);
 
 	private ConcurrentMap<Integer, User> USERS = new ConcurrentHashMap<>();
 
