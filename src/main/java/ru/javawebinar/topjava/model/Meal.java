@@ -3,13 +3,14 @@ package ru.javawebinar.topjava.model;
 import java.time.LocalDateTime;
 
 public class Meal extends AbstractBaseEntity{
-    protected Integer id;
 
-    protected final LocalDateTime dateTime;
+    private LocalDateTime dateTime;
 
-    protected final String description;
+    private String description;
 
-    protected final int calories;
+    private int calories;
+
+    private Integer userId;
 
     public Meal(LocalDateTime dateTime, String description, int calories) {
         this(null, dateTime, description, calories);
@@ -26,24 +27,24 @@ public class Meal extends AbstractBaseEntity{
         return dateTime;
     }
 
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
     public String getDescription() {
         return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getCalories() {
         return calories;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public boolean isNew() {
-        return this.id == null;
+    public void setCalories(int calories) {
+        this.calories = calories;
     }
 
     @Override
