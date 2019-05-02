@@ -21,27 +21,27 @@ import static ru.javawebinar.topjava.UserTestData.ADMIN;
 @RunWith(SpringRunner.class)
 public class InMemoryAdminRestControllerSpringTest {
 
-    @Autowired
-    private AdminRestController controller;
+	@Autowired
+	private AdminRestController controller;
 
-    @Autowired
-    private InMemoryUserRepositoryImpl repository;
+	@Autowired
+	private InMemoryUserRepositoryImpl repository;
 
-    @Before
-    public void setUp() throws Exception {
-        repository.init();
-    }
+	@Before
+	public void setUp() throws Exception {
+		repository.init();
+	}
 
-    @Test
-    public void delete() throws Exception {
-        controller.delete(UserTestData.USER_ID);
-        Collection<User> users = controller.getAll();
-        Assert.assertEquals(users.size(), 1);
-        Assert.assertEquals(users.iterator().next(), ADMIN);
-    }
+	@Test
+	public void delete() throws Exception {
+		controller.delete(UserTestData.USER_ID);
+		Collection<User> users = controller.getAll();
+		Assert.assertEquals(users.size(), 1);
+		Assert.assertEquals(users.iterator().next(), ADMIN);
+	}
 
-    @Test(expected = NotFoundException.class)
-    public void deleteNotFound() throws Exception {
-        controller.delete(10);
-    }
+	@Test(expected = NotFoundException.class)
+	public void deleteNotFound() throws Exception {
+		controller.delete(10);
+	}
 }
